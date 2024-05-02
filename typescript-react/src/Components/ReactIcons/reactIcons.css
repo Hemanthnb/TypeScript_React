@@ -1,0 +1,13 @@
+.icon{
+    border:none;
+    border-radius: 100%;
+    /* rounded-3xl bg-blue-500 hover:bg-blue-300 cursor-pointer */
+    background-color: #426dbc;
+    cursor: pointer;
+    color: white;
+    margin-right: 4px;
+    padding: 3px;
+}
+.icon:hover{
+    background-color:#A3D8FF ;
+}
