@@ -1,5 +1,5 @@
 import React from "react";
-import '/Users/testvagrant-1/self_learning/TypeScript_React/typescript-react/src/Components/ReactIcons/reactIcons.css'
+import './ReactIcons.css'
 // interface deleteTodo{
 //   todoId:string
 //   deleteTodoList:(todoId:string)=>void;
@@ -38,7 +38,6 @@ const DeleteIcon:React.FC<todoItemObj>=({todoItem,deleteTodo}):JSX.Element=>{
         <svg
           stroke="currentColor"
           fill="currentColor"
-          // stroke-width="0"
           viewBox="0 0 1024 1024"
           height="2em"
           width="2em"
