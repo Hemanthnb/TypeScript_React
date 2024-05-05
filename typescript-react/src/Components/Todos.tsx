@@ -15,9 +15,10 @@ interface todoLists {
   todoList: todoItem[];
   deleteTodo: (id: string) => void;
   doneTodo:(id:string)=>void;
+  editTodo:(id:string)=>void
 }
 
-const Todos: React.FC<todoLists> = ({ todoList, deleteTodo, doneTodo, }): JSX.Element => {
+const Todos: React.FC<todoLists> = ({ todoList, deleteTodo, doneTodo, editTodo}): JSX.Element => {
   const [deleteTodoId, setDeleteTodoId] = useState<string | null>(null);
 
   // const deleteTodo = (id: string) => {
@@ -38,7 +39,7 @@ const Todos: React.FC<todoLists> = ({ todoList, deleteTodo, doneTodo, }): JSX.El
           </p>
 
           <div className="icons flex mx-4">
-            <EditIcon todoItem={ele} />
+            <EditIcon todoItem={ele} editTodo={editTodo} />
             <DeleteIcon  todoItem={ele}  deleteTodo={deleteTodo} />
             <DoneIcon todoItem={ele} doneTodo={doneTodo} />
           </div>

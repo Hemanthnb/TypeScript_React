@@ -5,18 +5,21 @@ import { type } from "os";
 import { promises } from "dns";
 import Todos from "./Components/Todos";
 import { v4 as uuidv4 } from "uuid";
+import EditModule from "./Components/EditTodo/EditTodoList";
 function App(): JSX.Element {
-
   interface todoObj {
     todo: string;
     id: string;
-    property: string,
-    displayEdit:boolean,
-    displayDone:boolean
+    property: string;
+    displayEdit: boolean;
+    displayDone: boolean;
   }
 
   const [todoList, setTodoList] = useState<todoObj[]>([]);
   const [todo, setTodo] = useState<string>("");
+  const [editModuleVisible, setEditModuleVisible] = useState<boolean>(false);
+  const[editModuleTodo, setEditModuleTodo]=useState<string|null>(null);
+  const [editId,setEditId]= useState<string>('');
 
   const setTodoOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value);
@@ -28,8 +31,8 @@ function App(): JSX.Element {
       todo: todo,
       id: uuidv4(),
       property: "amber",
-      displayEdit:true,
-      displayDone:true
+      displayEdit: true,
+      displayDone: true,
     };
     setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
     setTodo("");
@@ -42,25 +45,40 @@ function App(): JSX.Element {
     );
   };
 
-  const doneTodo = (id: string): void => {
-    setTodoList(prevTodoItem=>prevTodoItem.map(todo=>{
-      if (todo.id === id) {
-        return { ...todo, property: 'green', displayDone:false, displayEdit:false };
-      }
-      return todo;
-    }));
+  const upDateTodoList=(todoString:string):void=>{
+    todoList.map((todo)=>{if(todo.id===editId){
+      todo.todo=todoString;
+      return;
+    }});
+    setEditModuleVisible(false);
+  }
 
-    // setTodoList(prevTodoList =>
-    //   prevTodoList.map(todo => {
-    //     if (todo.id === id) {
-    //       return { ...todo, property: 'green' };
-    //     }
-    //     return todo;
-    //   })
-    // );
-    console.log(todoList)
+  const doneTodo = (id: string): void => {
+    setTodoList((prevTodoItem) =>
+      prevTodoItem.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            property: "green",
+            displayDone: false,
+            displayEdit: false,
+          };
+        }
+        return todo;
+      })
+    );
+    console.log(todoList);
   };
 
+
+  const editTodo = (id: string): void => {
+    setEditId(id);
+    todoList.map(todo=>{if(todo.id===id){
+      setEditModuleTodo(todo.todo);
+      setEditModuleVisible(true);
+      return;
+    }});
+  };
   return (
     <>
       <div className="flex-col justify-center items-center bg-blue-950 w-full p-4">
@@ -79,7 +97,13 @@ function App(): JSX.Element {
               click here
             </button>
           </form>
-          <Todos todoList={todoList} deleteTodo={deleteTodo} doneTodo={doneTodo} />
+          <Todos
+            todoList={todoList}
+            deleteTodo={deleteTodo}
+            doneTodo={doneTodo}
+            editTodo={editTodo}
+          />
+          <EditModule editModuleVisible={editModuleVisible}  editModuleTodo={editModuleTodo} upDateTodoList={upDateTodoList}/>
         </div>
       </div>
     </>
