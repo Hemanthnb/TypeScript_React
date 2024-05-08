@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DeleteIcon from "./ReactIcons/DeleteIcon";
 import EditIcon from "./ReactIcons/EditIcon";
 import DoneIcon from "./ReactIcons/DoneIcon";
-import { todoItem, todoItemConfig } from "./shared/interfaces/interfaces";
+import { todoItem, todoItemConfig } from "../shared/interfaces/interfaces";
 export interface todoObj extends todoItem, todoItemConfig {}
 
 interface todoLists {

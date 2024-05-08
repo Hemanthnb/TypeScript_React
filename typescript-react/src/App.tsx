@@ -9,12 +9,14 @@ import EditModule from "./Components/EditTodo/EditTodoList";
 import {
   todoItem,
   todoItemConfig,
-} from "./Components/shared/interfaces/interfaces";
+} from "./shared/interfaces/interfaces";
 
 export interface todoObj extends todoItem, todoItemConfig {}
 
 function App(): JSX.Element {
+  //done
   const [todoList, setTodoList] = useState<todoObj[]>([]);
+  
   const [todo, setTodo] = useState<string>("");
   const [editModuleVisible, setEditModuleVisible] = useState<boolean>(false);
   const [editModuleTodo, setEditModuleTodo] = useState<string | null>(null);
