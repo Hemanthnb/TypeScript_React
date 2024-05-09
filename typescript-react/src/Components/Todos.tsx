@@ -22,7 +22,7 @@ const Todos: React.FC<todoLists> = ({
   return (
     <>
       {todoList.map((todoObj) => (
-        <div key={todoObj.id} className="flex  items-center">
+        <div key={todoObj.id} className="flex  items-center flex-wrap">
           <p
             className={`text-center text-blue-950 ${
               todoObj.property === "green" ? "bg-green-400" : "bg-amber-300"
