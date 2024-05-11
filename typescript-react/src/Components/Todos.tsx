@@ -32,7 +32,7 @@ const Todos: React.FC<todoLists> = ({
           </p>
 
           <div className="icons flex mx-4">
-            <EditIcon todoObj={todoObj} editTodo={editTodo} />
+            <EditIcon todoObj={todoObj} editTodo={editTodo}/>
             <DeleteIcon todoItem={todoObj} deleteTodo={deleteTodo} />
             <DoneIcon todoObj={todoObj} doneTodo={doneTodo} />
           </div>
