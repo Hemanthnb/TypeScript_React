@@ -20,12 +20,10 @@ const EditModule: React.FC<EditModuleProps> = ({
 
   const editTodo = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setTodo(event.target.value);
-    console.log(todo);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    console.log(todo);
     upDateTodoList(todo ?? "");
   };
   return (
