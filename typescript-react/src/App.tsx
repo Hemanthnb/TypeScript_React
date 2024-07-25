@@ -6,17 +6,14 @@ import { promises } from "dns";
 import Todos from "./Components/Todos";
 import { v4 as uuidv4 } from "uuid";
 import EditModule from "./Components/EditTodo/EditTodoList";
-import {
-  todoItem,
-  todoItemConfig,
-} from "./shared/interfaces/interfaces";
+import { todoItem, todoItemConfig } from "./shared/interfaces/interfaces";
 
 export interface todoObj extends todoItem, todoItemConfig {}
 
 function App(): JSX.Element {
   //done
   const [todoList, setTodoList] = useState<todoObj[]>([]);
-  
+
   const [todo, setTodo] = useState<string>("");
   const [editModuleVisible, setEditModuleVisible] = useState<boolean>(false);
   const [editModuleTodo, setEditModuleTodo] = useState<string | null>(null);
